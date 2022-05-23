@@ -1,4 +1,4 @@
-const {Product} = require('../models')
+const {Product} = require('../models');
 const categories = ['appliances','pets','home goods','other'];
 
 module.exports.renderProfile = async function (req,res){
@@ -6,14 +6,14 @@ module.exports.renderProfile = async function (req,res){
         req.params.id
     );
     res.render('products/profile', {product});
-}
+};
 
 module.exports.renderEditForm = async function (req,res) {
     const product = await Product.findByPk(
         req.params.id
     );
     res.render('products/edit',{product,categories});
-}
+};
 
 module.exports.updateProduct= async function (req,res) {
     await Product.update( {
@@ -26,4 +26,4 @@ module.exports.updateProduct= async function (req,res) {
         }
     });
     res.redirect(`/products/profile/${req.params.id}`);
-}
+};
